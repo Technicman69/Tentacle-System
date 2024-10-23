@@ -1,17 +1,11 @@
 {
-    "name": "§a§nTerror tendrils",
-    "description": "You can unleash Powerful Tendrills that attack anything they can reach",
+    "name": "§3§nTerror tendrils",
+    "description": "Cast a dark spell, and breath a live into the darkness. From its depths come 6 pitch-black tentacles that will aid you in combat!",
     "type": "apoli:multiple",
     "toggle": {
         "type": "apoli:toggle",
         "active_by_default": false,
-        "key": "key.saveToolbarActivator",
-        "condition": {
-            "type": "origins:resource",
-            "resource": "omni:change_form_resource",
-            "comparison": "==",
-            "compare_to": 1
-        }
+        "key": "key.origins.primary_active"
     },
     "toggle_check": {
         "type": "apoli:action_over_time",
@@ -22,12 +16,12 @@
         },
         "rising_action": {
             "type": "apoli:grant_power",
-            "power": "*:terror_tendrills",
+            "power": "*:tentacles/terror_tendrils",
             "source": "*:*"
         },
         "falling_action": {
             "type": "apoli:revoke_power",
-            "power": "*:terror_tendrills",
+            "power": "*:tentacles/terror_tendrils",
             "source": "*:*"
         }
     }

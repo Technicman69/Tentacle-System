@@ -1,6 +1,6 @@
 {
   "pack": {
-    "pack_format": 10,
-    "description": "MADE BY NOTPOG §6(recreated by Technicman)"
+    "pack_format": 8,
+    "description": [{"text":"T","color":"green"},{"text":"e","color":"#3cfb43"},{"text":"c","color":"#3af947"},{"text":"h","color":"#38f74c"},{"text":"'","color":"#36f550"},{"text":"s ","color":"#34f254"},{"text":"I","color":"#31f059"},{"text":"n","color":"#2fee5d"},{"text":"c","color":"#2dec62"},{"text":"r","color":"#2bea66"},{"text":"e","color":"#29e76a"},{"text":"d","color":"#27e56f"},{"text":"i","color":"#24e373"},{"text":"b","color":"#22e177"},{"text":"l","color":"#20df7c"},{"text":"e ","color":"#1edc80"},{"text":"T","color":"#1cda85"},{"text":"e","color":"#1ad889"},{"text":"n","color":"#17d68d"},{"text":"t","color":"#15d492"},{"text":"a","color":"#13d196"},{"text":"c","color":"#11cf9a"},{"text":"l","color":"#0fcd9f"},{"text":"e ","color":"#0dcba3"},{"text":"S","color":"#0ac9a8"},{"text":"y","color":"#08c6ac"},{"text":"s","color":"#06c4b0"},{"text":"t","color":"#04c2b5"},{"text":"e","color":"#02c0b9"},{"text":"m","color":"dark_aqua"}]
   }
 }

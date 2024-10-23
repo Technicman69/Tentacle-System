@@ -3,7 +3,10 @@
     "type": "apoli:multiple",
     "effect_timer": {
         "type": "apoli:cooldown",
-        "cooldown": 20
+        "cooldown": 20,
+        "hud_render": {
+            "should_render": false
+        }
     },
     "add_and_remove": {
         "type": "apoli:action_on_callback",

@@ -1,0 +1,9 @@
+{
+    "name": "Octodemon",
+    "impact": 2,
+    "icon": "minecraft:black_dye",
+    "description": "An example origin with tentacle powers.",
+    "powers": [
+        "tech:tentacles/toggle_power"
+    ]
+}
