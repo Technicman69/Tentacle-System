@@ -1,0 +1,1 @@
+playsound minecraft:entity.warden.death master @a ~ ~ ~ 0.4 2

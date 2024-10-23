@@ -1,0 +1,305 @@
+{
+	"type": "origins:multiple",
+	"resource": {
+		"type": "origins:resource",
+		"min": 0,
+		"max": 1,
+		"hud_render": {
+			"should_render": false
+		}
+	},
+	"toggle": {
+		"type": "origins:active_self",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:entity.enderman.stare master @a ~ ~ ~ 2 1.25"
+				}
+			]
+		},
+		"cooldown": 200,
+		"hud_render": {
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_02.png",
+			"bar_index": 14
+		},
+		"key": {
+			"key": "key.origins.secondary_active",
+			"continuous": false
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:insomnia_bar_resource",
+					"comparison": ">",
+					"compare_to": 250
+				},
+				{
+					"type": "origins:on_block"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"toggle2": {
+		"type": "origins:active_self",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.beacon.activate master @a ~ ~ ~ 2 0"
+				}
+			]
+		},
+		"cooldown": 200,
+		"hud_render": {
+			"sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
+			"bar_index": 18
+		},
+		"key": {
+			"key": "key.origins.secondary_active",
+			"continuous": false
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:insomnia_bar_resource",
+					"comparison": ">",
+					"compare_to": 250
+				},
+				{
+					"type": "origins:on_block"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	"prevent_transform": {
+		"type": "origins:self_action_when_hit",
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "omni:change_form_toggle",
+			"change": 200,
+			"operation": "set"
+		},
+		"damage_condition": {
+			"type": "origins:attacker"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		},
+		"cooldown": 1
+	},
+	"prevent_transform2": {
+		"type": "origins:self_action_when_hit",
+		"entity_action": {
+			"type": "origins:change_resource",
+			"resource": "omni:change_form_toggle2",
+			"change": 200,
+			"operation": "set"
+		},
+		"damage_condition": {
+			"type": "origins:attacker"
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		},
+		"cooldown": 1
+	},
+	"into_nightmare": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "function omni:nightmare_circle"
+				},
+				{
+					"type": "origins:apply_effect",
+					"effect": {
+						"effect": "minecraft:slowness",
+						"duration": 25,
+						"amplifier": 255,
+						"is_ambient": false,
+						"show_particles": false,
+						"show_icon": true
+					}
+				}
+			]
+		},
+		"falling_action" :{
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:command",
+				"command": "execute if entity @s[nbt={HurtTime:9s}]",
+				"comparison": "==",
+				"compare_to": 1
+			},
+			"if_action": {
+				"type": "origins:set_on_fire",
+				"duration": 5
+			},
+			"else_action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:execute_command",
+						"command": "playsound minecraft:entity.zombie_villager.cure master @a ~ ~ ~ 1 0"
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "particle minecraft:squid_ink ~ ~1 ~ 0.25 0.5 0.25 0.1 100 force @a"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "omni:change_form_resource",
+						"change": 1,
+						"operation": "set"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "omni:insomnia_bar_resource",
+						"change": -250,
+						"operation": "add"
+					}
+				]
+			}
+		},
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_toggle",
+					"comparison": ">",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:insomnia_bar_resource",
+					"comparison": ">",
+					"compare_to": 250
+				}
+			]
+		}
+	},
+	"into_dream": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "function omni:dream_circle"
+				},
+				{
+					"type": "origins:apply_effect",
+					"effect": {
+						"effect": "minecraft:slowness",
+						"duration": 25,
+						"amplifier": 255,
+						"is_ambient": false,
+						"show_particles": false,
+						"show_icon": true
+					}
+				}
+			]
+		},
+		"falling_action" :{
+			"type": "origins:if_else",
+			"condition": {
+				"type": "origins:command",
+				"command": "execute if entity @s[nbt={HurtTime:9s}]",
+				"comparison": "==",
+				"compare_to": 1
+			},
+			"if_action": {
+				"type": "origins:set_on_fire",
+				"duration": 5
+			},
+			"else_action": {
+				"type": "origins:and",
+				"actions": [
+					{
+						"type": "origins:execute_command",
+						"command": "playsound minecraft:entity.zombie_villager.cure master @a ~ ~ ~ 1 0"
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "particle minecraft:end_rod ~ ~1 ~ 0.25 0.5 0.25 0.1 100 force @a"
+					},
+					{
+						"type": "origins:execute_command",
+						"command": "particle minecraft:end_rod ~ ~1 ~ 0.25 0.5 0.25 0.1 100 force @a"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "omni:change_form_resource",
+						"change": 0,
+						"operation": "set"
+					},
+					{
+						"type": "origins:change_resource",
+						"resource": "omni:insomnia_bar_resource",
+						"change": -250,
+						"operation": "add"
+					}
+				]
+			}
+		},
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_toggle2",
+					"comparison": ">",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:insomnia_bar_resource",
+					"comparison": ">",
+					"compare_to": 250
+				}
+			]
+		}
+	},
+	"name": "§a§nManifest",
+	"description": "Pressing your Secondary Button will allow you to enter a ritual in order to change modes (nightmare and dream mode). If interrupted, you will be lit on fire and will not transform"
+}

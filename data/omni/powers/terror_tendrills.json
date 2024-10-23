@@ -1,0 +1,162 @@
+{
+    "hidden": true,
+    "type": "apoli:multiple",
+    "effect_timer": {
+        "type": "apoli:cooldown",
+        "cooldown": 20
+    },
+    "add_and_remove": {
+        "type": "apoli:action_on_callback",
+        "entity_action_added": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/execute rotated ~ -90 run function tech:tentacles/util/summon_6"
+                },
+                {
+                    "type": "apoli:trigger_cooldown",
+                    "power": "*:*_effect_timer"
+                }
+            ]
+        },
+        "entity_action_removed": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "/function tech:tentacles/util/remove_6"
+                }
+            ]
+        }
+    },
+    "attack_speed": {
+        "type": "apoli:attribute",
+        "modifier": {
+            "attribute": "minecraft:generic.attack_speed",
+            "operation": "multiply_base",
+            "value": 0.15
+        }
+    },
+    "attach_tentacle_base": {
+        "type": "apoli:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "apoli:execute_command",
+            "command": "/tp @e[type=marker,tag=tent.base,sort=nearest,limit=6] ~ ~1.3 ~"
+        }
+    },
+    "attack_targets": {
+        "type": "apoli:action_over_time",
+        "interval": 5,
+        "entity_action": {
+            "type": "apoli:area_of_effect",
+            "radius": 8,
+            "shape": "sphere",
+            "bientity_condition": {
+                "type": "apoli:and",
+                "conditions": [
+                    {
+                        "type": "apoli:target_condition",
+                        "condition": {
+                            "type": "apoli:command",
+                            "command": "execute if entity @s[tag=tent.target] if entity @e[type=marker,tag=tent.end,distance=..0.5]",
+                            "comparison": ">=",
+                            "compare_to": 1
+                        }
+                    }
+                ]
+            },
+            "bientity_action": {
+                "type": "apoli:and",
+                "actions": [
+                    {
+                        "type": "apoli:damage",
+                        "amount": 7,
+                        "source": {
+                            "name": "even_more_magic",
+                            "magic": true
+                        }
+                    },
+                    {
+                        "type": "apoli:add_velocity",
+                        "z": 0.15
+                    },
+                    {
+                        "type": "apoli:target_action",
+                        "action": {
+                            "type": "apoli:and",
+                            "actions": [
+                                {
+                                    "type": "apoli:execute_command",
+                                    "command": "function tech:tentacles/util/clear_target"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "target_entities": {
+        "type": "apoli:action_over_time",
+        "interval": 2,
+        "entity_action": {
+            "type": "apoli:and",
+            "actions": [
+                {
+                    "type": "apoli:execute_command",
+                    "command": "execute as @e[tag=tent.potential_target,distance=8..] run tag @s remove tent.potential_target"
+                },
+                {
+                    "type": "apoli:execute_command",
+                    "command": "execute as @e[tag=tent.target,distance=8..] run function tech:tentacles/util/clear_target"
+                },
+                {
+                    "type": "apoli:area_of_effect",
+                    "radius": 8,
+                    "shape": "sphere",
+                    "bientity_condition": {
+                        "type": "apoli:and",
+                        "conditions": [
+                            {
+                                "type": "apoli:target_condition",
+                                "condition": {
+                                    "type": "apoli:and",
+                                    "conditions": [
+                                        {
+                                            "type": "apoli:living"
+                                        },
+                                        {
+                                            "type": "apoli:gamemode",
+                                            "gamemode": "spectator",
+                                            "inverted": true
+                                        },
+                                        {
+                                            "type": "apoli:command",
+                                            "command": "execute if entity @s[tag=!tent.target,tag=!tent.node,tag=!tent.user]",
+                                            "comparison": ">=",
+                                            "compare_to": 1
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    "bientity_action": {
+                        "type": "apoli:target_action",
+                        "action": {
+                            "type": "apoli:and",
+                            "actions": [
+                                {
+                                    "type": "apoli:execute_command",
+                                    "command": "tag @s add tent.potential_target"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

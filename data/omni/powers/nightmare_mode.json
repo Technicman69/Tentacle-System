@@ -1,0 +1,35 @@
+{
+	"type": "origins:multiple",
+	"vision" : {
+		"type": "origins:shader",
+		"shader": "minecraft:shaders/post/desaturate.json",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	"boss_health": {
+		"type": "apoli:conditioned_attribute",
+		"update_health": true,
+		"modifier": {
+			"name": "nightmare mode boss health",
+			"attribute": "minecraft:generic.max_health",
+			"operation": "addition",
+			"value": 20
+		},
+		"condition": {
+			"type": "origins:resource",
+			"resource": "omni:change_form_resource",
+			"comparison": "==",
+			"compare_to": 1
+		}
+	},
+	"hidden": true
+}

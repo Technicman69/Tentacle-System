@@ -1,0 +1,23 @@
+{
+	"powers": [
+		"omni:omni_start",
+		"omni:insomnia_bar",
+		"omni:change_form",
+		"omni:dream_mode",
+		"omni:nightmare_mode",
+		"omni:flight",
+		"omni:astral_projection",
+		"omni:dream_target",
+		"omni:eternal_grace",
+		"omni:nightmare_target",
+		"omni:nightmare_claus",
+		"omni:nightmare_invis",
+		"omni:toggle_tendrills",
+		"omni:debuffs"
+	],
+	"icon": "minecraft:ender_eye",
+	"order": 9999999,
+	"impact": 3,
+	"name": "The Omni-Gazer",
+	"description": "The Omni-Gazer is a Lonely Spirit that feeds on Insomnia. Any Dream or Nightmare it visits manifests into reality, and as such, The Omni-Gazer has vowed to soley observe mortals"
+}

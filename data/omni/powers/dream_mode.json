@@ -1,0 +1,19 @@
+{
+	"type": "origins:multiple",
+	"vision" : {
+		"type": "origins:shader",
+		"shader": "minecraft:shaders/post/color_convolve.json",
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"hidden": true
+}

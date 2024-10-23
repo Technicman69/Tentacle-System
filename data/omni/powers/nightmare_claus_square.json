@@ -1,0 +1,37 @@
+{
+	"type": "origins:multiple",
+	"claus_effects" : {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:squid_ink ~ ~2 ~5 2.5 2.5 0 0 50 force @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:squid_ink ~ ~2 ~-5 2.5 2.5 0 0 50 force @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:squid_ink ~5 ~2 ~ 0 2.5 2.5 0 50 force @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:squid_ink ~-5 ~2 ~ 0 2.5 2.5 0 50 force @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=!omni_nightmare,distance=5..6] run tp @s ~ ~ ~"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "playsound minecraft:block.sculk_sensor.clicking master @a ~ ~ ~ 1 2"
+				}
+			]
+		},
+		"interval": 1
+	},
+	"hidden": true
+}

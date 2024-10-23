@@ -1,0 +1,34 @@
+{
+    "name": "§a§nTerror tendrils",
+    "description": "You can unleash Powerful Tendrills that attack anything they can reach",
+    "type": "apoli:multiple",
+    "toggle": {
+        "type": "apoli:toggle",
+        "active_by_default": false,
+        "key": "key.saveToolbarActivator",
+        "condition": {
+            "type": "origins:resource",
+            "resource": "omni:change_form_resource",
+            "comparison": "==",
+            "compare_to": 1
+        }
+    },
+    "toggle_check": {
+        "type": "apoli:action_over_time",
+        "interval": 1,
+        "condition": {
+            "type": "apoli:power_active",
+            "power": "*:*_toggle"
+        },
+        "rising_action": {
+            "type": "apoli:grant_power",
+            "power": "*:terror_tendrills",
+            "source": "*:*"
+        },
+        "falling_action": {
+            "type": "apoli:revoke_power",
+            "power": "*:terror_tendrills",
+            "source": "*:*"
+        }
+    }
+}

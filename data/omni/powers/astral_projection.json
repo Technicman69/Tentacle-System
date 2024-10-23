@@ -1,0 +1,386 @@
+{
+	"type": "origins:multiple",
+	"astral_proj": {
+		"type": "origins:active_self",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:spawn_entity",
+					"entity_type": "minecraft:skeleton",
+					"tag": "{NoAI:1b,Tags:['omni_body'],DeathLootTable:'minecraft:empty',PersistenceRequired:1,Silent:1}",
+					"entity_action": {
+						"type": "origins:and",
+						"actions": 
+						[
+							{
+								"type": "origins:execute_command",
+								"command": "power grant @s omni:dream_mode_model_color"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "power grant @s origins:fire_immunity"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "power grant @s omni:body_when_hit"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "function omni:entity_grab_uuid"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.allay.item_given master @a ~ ~ ~ 5 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "particle minecraft:dust_color_transition .1 0 1 1 1 0 0.5 ~ ~1 ~ .25 .5 .25 0 200 force @a"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "particle minecraft:end_rod ~ ~1 ~ .25 .5 .25 0.25 50 force @a"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "forceload add ~ ~ ~ ~"
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "gamemode spectator @s"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s add omni_body_offline"
+				},
+				{
+					"type": "origins:change_resource",
+					"resource": "omni:insomnia_bar_resource",
+					"change": -100,
+					"operation": "add"
+				}
+			]
+		},
+		"cooldown": 20,
+		"hud_render": {
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 7
+		},
+		"key": {
+			"key": "key.origins.primary_active",
+			"continuous": false
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:insomnia_bar_resource",
+					"comparison": ">",
+					"compare_to": 100
+				},
+				{
+					"type": "origins:on_block"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator",
+					"inverted": true
+				},
+				{
+					"type": "origins:command",
+					"command": "execute as @e[tag=omni_body] if score @s omni_uuid1 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid1 if score @s omni_uuid2 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid2 if score @s omni_uuid3 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid3 if score @s omni_uuid4 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid4",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"soul_effects_dream": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": 
+			[
+				{
+					"type": "origins:execute_command",
+					"command": "particle minecraft:dust_color_transition .1 0 1 1 1 0 0.5 ~ ~1 ~ .25 .25 .25 0 10 force @a"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=omni_body] if score @s omni_uuid1 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid1 if score @s omni_uuid2 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid2 if score @s omni_uuid3 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid3 if score @s omni_uuid4 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid4 facing entity @s eyes run particle minecraft:end_rod ^ ^ ^3 0 0 0 0 1 force @a[distance=..1,limit=1,tag=omni_body_offline]"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "execute as @e[tag=omni_body] if score @s omni_uuid1 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid1 if score @s omni_uuid2 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid2 if score @s omni_uuid3 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid3 if score @s omni_uuid4 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid4 run execute at @s run particle minecraft:dust_color_transition .1 0 1 1 1 0 0.5 ~ ~ ~ .25 .25 .25 0 1 force @a"
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:command",
+								"command": "execute if score @e[distance=0,tag=omni_body,limit=1] omni_uuid1 = @s omni_uuid1 if score @e[distance=0,tag=omni_body,limit=1] omni_uuid2 = @s omni_uuid2 if score @e[distance=0,tag=omni_body,limit=1] omni_uuid3 = @s omni_uuid3 if score @e[distance=0,tag=omni_body,limit=1] omni_uuid4 = @s omni_uuid4",
+								"comparison": "==",
+								"compare_to": 1   
+							},
+							{
+								"type": "origins:resource",
+								"resource": "omni:astral_projection_astral_proj",
+								"comparison": "==",
+								"compare_to": 0
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "gamemode survival @s"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:entity.allay.item_taken master @a ~ ~ ~ 5 1"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "particle minecraft:dust_color_transition .1 0 1 1 1 0 0.5 ~ ~1 ~ .25 .5 .25 0 200 force @a"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "particle minecraft:end_rod ~ ~1 ~ .25 .5 .25 0.25 50 force @a"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "kill @e[tag=omni_body,distance=..1]"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "forceload remove ~ ~ ~ ~"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "tag @s remove omni_body_offline"
+							},
+							{
+								"type": "origins:delay",
+								"ticks": 1,
+								"action": {	
+									"type": "origins:execute_command",
+									"command": "power revoke @s omni:dream_possessed"
+								}
+							}
+						]
+					}
+				},
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:command",
+								"command": "execute if entity @e[distance=0,tag=!omni_body,tag=!omni_body_offline,limit=1]",
+								"comparison": "==",
+								"compare_to": 1   
+							},
+							{
+								"type": "origins:resource",
+								"resource": "omni:astral_projection_astral_proj",
+								"comparison": "==",
+								"compare_to": 0
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "power grant @e[distance=0,tag=!omni_body,tag=!omni_body_offline,limit=1] omni:dream_possessed"
+							}
+						]
+					},
+					"else_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "power revoke @e[distance=..10,tag=!omni_body,tag=!omni_body_offline] omni:dream_possessed"
+							}
+						]
+					}
+				}
+			]
+		},
+		"falling_action" : {
+			"type": "origins:execute_command",
+			"command": "gamemode survival @s"
+		},
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute as @e[tag=omni_body] if score @s omni_uuid1 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid1 if score @s omni_uuid2 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid2 if score @s omni_uuid3 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid3 if score @s omni_uuid4 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid4",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	"body_killed_offline": {
+		"type": "origins:action_over_time",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": 
+			[
+				{
+					"type": "origins:execute_command",
+					"command": "gamemode survival @s[tag=omni_body_offline]"
+				},
+				{
+					"type": "origins:execute_command",
+					"command": "tag @s remove omni_body_offline"
+				}
+			]
+		},
+		"interval": 1,
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator"
+				},
+				{
+					"type": "origins:nbt",
+					"nbt": "{Tags: ['omni_body_offline']}"
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:command",
+					"command": "execute as @e[tag=omni_body] if score @s omni_uuid1 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid1 if score @s omni_uuid2 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid2 if score @s omni_uuid3 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid3 if score @s omni_uuid4 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid4",
+					"comparison": "==",
+					"compare_to": 0
+				}
+			]
+		}
+	},
+	"heal_possessed_mob": {
+		"type": "origins:active_self",
+		"entity_action": {
+			"type": "origins:and",
+			"actions": [
+				{
+					"type": "origins:if_else",
+					"condition": {
+						"type": "origins:and",
+						"conditions": [
+							{
+								"type": "origins:command",
+								"command": "execute if entity @e[distance=0,tag=!omni_body,tag=!omni_body_offline,limit=1]",
+								"comparison": "==",
+								"compare_to": 1   
+							},
+							{
+								"type": "origins:resource",
+								"resource": "omni:astral_projection_astral_proj",
+								"comparison": "==",
+								"compare_to": 0
+							}
+						]
+					},
+					"if_action": {
+						"type": "origins:and",
+						"actions": [
+							{
+								"type": "origins:execute_command",
+								"command": "effect give @e[distance=..1,tag=!omni_body,tag=!omni_body_offline,limit=1] minecraft:regeneration 10 1 true"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "playsound minecraft:block.beacon.power_select master @a ~ ~ ~ 1 1.5"
+							},
+							{
+								"type": "origins:execute_command",
+								"command": "particle minecraft:heart ~ ~1 ~ 0.25 0.25 0.25 0 3 force @a"
+							},
+							{
+								"type": "origins:change_resource",
+								"resource": "omni:insomnia_bar_resource",
+								"change": -100,
+								"operation": "add"
+							}
+						]
+					}
+				}
+			]
+		},
+		"cooldown": 200,
+		"hud_render": {
+			"sprite_location": "origins:textures/gui/community/spiderkolo/resource_bar_02.png",
+			"bar_index": 9
+		},
+		"key": {
+			"key": "key.origins.primary_active",
+			"continuous": false
+		},
+		"condition": {
+			"type": "origins:and",
+			"conditions": [
+				{
+					"type": "origins:resource",
+					"resource": "omni:change_form_resource",
+					"comparison": "==",
+					"compare_to": 0
+				},
+				{
+					"type": "origins:resource",
+					"resource": "omni:insomnia_bar_resource",
+					"comparison": ">",
+					"compare_to": 100
+				},
+				{
+					"type": "origins:gamemode",
+					"gamemode": "spectator"
+				},
+				{
+					"type": "origins:command",
+					"command": "execute as @e[tag=omni_body] if score @s omni_uuid1 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid1 if score @s omni_uuid2 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid2 if score @s omni_uuid3 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid3 if score @s omni_uuid4 = @a[distance=..1,limit=1,tag=omni_body_offline] omni_uuid4",
+					"comparison": "==",
+					"compare_to": 1
+				}
+			]
+		}
+	},
+	"name": "§a§nAstral Projection",
+	"description": "Pressing the Primary Button in Dream mode will allow you to leave your body! When in Soul mode, you can travel through walls and possess mobs. In order to exit soul mode, you have to possess your own body. Any damage your body takes will force your soul to exit soul mode.\n\nWhen possessing a mob, that mob will gain 2 extra hearts and gain your Dream Touch ability. Using your Primary Button in Soul mode, you can heal the entity you are possessing"
+}
