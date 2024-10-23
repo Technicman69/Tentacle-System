@@ -3,7 +3,7 @@ scoreboard players operation $current tent.uuid = @s tent.uuid
 scoreboard players remove $next_node tent.node_id 1
 
 # move nodes
-execute as @e[type=marker,tag=tent.node] if score $current tent.uuid = @s tent.uuid if score @s tent.node_id = $next_node tent.node_id run function tech:tentacles/_update_loop
+execute as @e[type=marker,tag=tent.node] if score $current tent.uuid = @s tent.uuid if score @s tent.node_id = $next_node tent.node_id run function tech:tentacles/_update_loop with storage tech:tent update
 
 # Move towards target
 tag @s add temp

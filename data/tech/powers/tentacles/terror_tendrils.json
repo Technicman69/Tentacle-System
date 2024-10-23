@@ -3,10 +3,7 @@
     "type": "apoli:multiple",
     "effect_timer": {
         "type": "apoli:cooldown",
-        "cooldown": 20,
-        "hud_render": {
-            "should_render": false
-        }
+        "cooldown": 20
     },
     "add_and_remove": {
         "type": "apoli:action_on_callback",
@@ -76,10 +73,7 @@
                     {
                         "type": "apoli:damage",
                         "amount": 7,
-                        "source": {
-                            "name": "even_more_magic",
-                            "magic": true
-                        }
+                        "damage_type": "minecraft:magic"
                     },
                     {
                         "type": "apoli:add_velocity",
