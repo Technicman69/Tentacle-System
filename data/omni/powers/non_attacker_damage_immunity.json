@@ -1,0 +1,26 @@
+{
+    "hidden": true,
+    "type": "apoli:modify_damage_taken",
+    "damage_condition": {
+        "type": "apoli:and",
+        "conditions": [
+            {
+                "type": "origins:attacker",
+                "entity_condition": {
+                    "type": "origins:constant",
+                    "value": true
+                },
+                "inverted": true
+            },
+            {
+                "type": "apoli:type",
+                "damage_type": "outOfWorld",
+                "inverted": true
+            }
+        ]
+    },
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -1
+    }
+}

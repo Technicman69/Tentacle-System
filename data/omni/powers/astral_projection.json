@@ -19,6 +19,10 @@
 							},
 							{
 								"type": "origins:execute_command",
+								"command": "power grant @s omni:non_attacker_damage_immunity"
+							},
+							{
+								"type": "origins:execute_command",
 								"command": "power grant @s origins:fire_immunity"
 							},
 							{

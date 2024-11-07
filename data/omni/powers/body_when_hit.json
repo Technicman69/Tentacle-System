@@ -45,9 +45,6 @@
 							}
 						]
     },
-    "damage_condition": {
-        "type": "origins:attacker"
-    },
     "cooldown": 1,
 	"hidden": true
 }
