@@ -13,8 +13,8 @@
                 "inverted": true
             },
             {
-                "type": "apoli:type",
-                "damage_type": "outOfWorld",
+                "type": "apoli:in_tag",
+                "tag": "bypasses_invulnerability",
                 "inverted": true
             }
         ]

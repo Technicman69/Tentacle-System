@@ -4,8 +4,9 @@
 
     "type": "apoli:multiple",
     "timer": {
-        "type": "apoli:cooldown",
-        "cooldown": 300
+        "type": "apoli:resource",
+        "min": 0,
+        "max": 300
     },
     "use": {
         "type": "apoli:active_self",
@@ -19,8 +20,10 @@
             "type": "apoli:and",
             "actions": [
                 {
-                    "type": "apoli:trigger_cooldown",
-                    "power": "*:*_timer"
+                    "type": "apoli:change_resource",
+                    "resource": "*:*_timer",
+                    "change": 300,
+                    "operation": "set"
                 }
             ]
         },
@@ -50,6 +53,11 @@
         "entity_action": {
             "type": "apoli:and",
             "actions": [
+                {
+                    "type": "apoli:change_resource",
+                    "resource": "*:*_timer",
+                    "change": -1
+                },
                 {
                     "type": "apoli:execute_command",
                     "command": "/execute as @e[type=minecraft:armor_stand,tag=omni.symbols,limit=1,sort=nearest] at @s run function omni:eternal_grace_symbols"
@@ -103,8 +111,7 @@
     "animate_alchemy_circles": {
         "type": "apoli:action_over_time",
         "interval": 2,
-        "entity_action": 
-        {
+        "entity_action": {
             "type": "apoli:execute_command",
             "command": "/execute as @e[type=minecraft:armor_stand,tag=omni.alchemy,limit=1,sort=nearest] at @s run function omni:eternal_grace_alchemy"
         },
