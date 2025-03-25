@@ -5,7 +5,7 @@
 #define tag tent.user Tentacle user. Tentacles do not attack users with this tag
 #define tag tent.potential_target Potential tentacle target. It is used by tentacles to choose from randomly.
 #define tag tent.target Tentacle target. It should be choosen automaticly
-#define storage tech:tent for uses of macros in tech:tentacles namespace
+#define storage tech:tent for uses of macros in tech:tentacle namespace
 
 scoreboard objectives add tent.node_id dummy
 scoreboard objectives add tent.uuid dummy
@@ -13,7 +13,7 @@ scoreboard objectives add tent.uuid dummy
 scoreboard players set $next tent.node_id 0
 scoreboard players set $next tent.uuid 0
 
-function tech:tentacles/settings/main
+function tech:tentacle/settings/main
 
 #define score_holder $MAX_STEPS max number of steps in ray-cast
 scoreboard players set $RAY_STEP tent.uuid 25

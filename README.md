@@ -13,7 +13,7 @@ A system that implements tentacle psychics using datapack `.mcfunction`. Suitabl
 ## Usage
 ### Picking the example Origin
 To pick the origin, use the Origin Orb or type this command:
-`/origin set @s origins:origin tech:tentacles`
+`/origin set @s origins:origin tech:tentacle`
 ### Basic Overview
 Different files are responsible for different things (ofc)
 1. Powers
@@ -27,7 +27,7 @@ Different files are responsible for different things (ofc)
     - make the tip (end) of the target move towards the target (`update.mcfunction`)
     - make the whole tentacle move with move with its tip (by recursively calling `_update_loop.mcfunction` for each node from the tip to base and then from base to tip). The movement consists of 2 parts: first the tip pulling consecutive nodes towards itself, then the base pulling them back, so it stayes attached 
 ### Usefull functions
-You can invoke them by typing: `/function tech:tentacles/<function name here>`
+You can invoke them by typing: `/function tech:tentacle/<function name here>`
 1. `summon` - summon tentacle in this spot facing direction of player. By default it is not attached to the players, so it does not teleport to them, when they move and the tip of the tentacle doesn't move either.
 2. `remove` - removes closest tentacle (its base must be in range of 2 blocks, as specified in the function)
 ### Simple parameter configuration

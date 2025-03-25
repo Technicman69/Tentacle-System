@@ -1,5 +1,5 @@
 {
-    "name": "§3§nTerror tendrils",
+    "name": "§3Terror tendrils",
     "description": "Cast a dark spell, and breath a live into the darkness. From its depths come 6 pitch-black tentacles that will aid you in combat!",
     "type": "apoli:multiple",
     "toggle": {
@@ -16,12 +16,12 @@
         },
         "rising_action": {
             "type": "apoli:grant_power",
-            "power": "*:tentacles/terror_tendrils",
+            "power": "*:tentacle/terror_tendrils",
             "source": "*:*"
         },
         "falling_action": {
             "type": "apoli:revoke_power",
-            "power": "*:tentacles/terror_tendrils",
+            "power": "*:tentacle/terror_tendrils",
             "source": "*:*"
         }
     }

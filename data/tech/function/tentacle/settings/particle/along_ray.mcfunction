@@ -1,0 +1,1 @@
+$particle minecraft:dust{color:[0,0,0],scale:0.5} ^ ^ ^$(step) $(spread) $(spread) $(spread) 1 $(count) $(mode)
